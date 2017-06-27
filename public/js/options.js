@@ -54,8 +54,7 @@ const $itinerary = $('#itinerary')
 $itinerary.on('click', 'button[data-action="rmvbtn"]', function() {
   	const $itineraryItem = $(this).parent();
     $itineraryItem.remove()
-
-})
+});
 
 
 
