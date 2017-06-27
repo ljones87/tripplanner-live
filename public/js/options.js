@@ -2,9 +2,10 @@
 const $hotelChoices = $("#hotel-choices");
 const $restaurantChoices = $("#restaurant-choices");
 const $activityChoices = $("#activity-choices");
+const $optionsPanel = $("options-panel");
 
 hotels.forEach(function(hotel) {
-  $hotelChoices.append(`<option data-id=${hotel.id}>${hotel.name}</option>`);
+  $hotelChoices.append(`<option data-id=${hotel.id}>${hotel.name}</option>`)
 });
 
 restaurants.forEach(function(restaurant) {
@@ -20,7 +21,14 @@ activities.forEach(function(activity) {
 // construct itinerary item
 // attach in DOM place
 // update map
-$("[data-action]").on('click', function() {
-	console.log(this);
-})
+
+ var selected = $( "#hotel-choices" ).find(":selected")
+
+$hotelChoices.on('click', 'button[data-action]', function() {
+   console.log(selected)
+//  	const $select = $(this).siblings('select');
+//   const type = $select.data('type');
+//   const id = $select.find(':selected').val();
+
+  })
 

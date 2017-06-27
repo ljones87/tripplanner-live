@@ -22,7 +22,7 @@
           <div>
             <h4>Restaurants</h4>
             <select data-type="restaurant" id="restaurant-choices">
-             
+
             </select>
             <button data-action="add" class="btn btn-primary btn-circle pull-right">+</button>
           </div>
@@ -89,6 +89,5 @@
   var hotels = {{ hotels | dump | safe }};
   var restaurants = {{ restaurants | dump | safe }};
   var activities = {{ activities | dump | safe }};
-  console.log(activities);
 </script>
 {% endblock %}
