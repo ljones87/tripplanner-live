@@ -28,17 +28,22 @@ $optionsPanel.on('click', 'button[data-action]', function() {
  	const $select = $(this).siblings('select');
   	const type = $select.data('type');
   	const id = $select.find(':selected').val();
-  	const $found = $("#itinerary").find('ul');
 
-  	if(type === 'hotel'){
-  		$($found[0]).append(`<div class="itinerary-item">
+  	const $found = $("#itinerary").find('ul');
+		console.log($("#itinerary-item"))
+    const appenDiv = (x) => {
+			x.append(`<div class="itinerary-item">
             <span class="title">${id}</span>
             <button class="btn btn-xs btn-danger remove btn-circle">x</button>
             </div>`);
+		}
+
+  	if(type === 'hotel'){
+			 appenDiv($($found[0]))
   	} else if (type === 'restaurant'){
-
+			 appenDiv($($found[1]))
   	} else if (type === 'activity'){
-
+			 appenDiv($($found[2]))
   	}
  });
 
