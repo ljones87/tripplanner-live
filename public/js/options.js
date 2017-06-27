@@ -1,19 +1,18 @@
-
 const $hotelChoices = $("#hotel-choices");
 const $restaurantChoices = $("#restaurant-choices");
 const $activityChoices = $("#activity-choices");
 const $optionsPanel = $("#options-panel");
 
 hotels.forEach(function(hotel) {
-  $hotelChoices.append(`<option data-id=${hotel.id}>${hotel.name}</option>`)
+  $hotelChoices.append(`<option data-id=${hotel.id} data-location=${hotel.place.location}>${hotel.name}</option>`)
 });
 
 restaurants.forEach(function(restaurant) {
-  $restaurantChoices.append(`<option data-id=${restaurant.id}>${restaurant.name}</option>`);
+  $restaurantChoices.append(`<option data-id=${restaurant.id} data-location=${restaurant.place.location}>${restaurant.name}</option>`);
 });
 
 activities.forEach(function(activity) {
-  $activityChoices.append(`<option data-id=${activity.id}>${activity.name}</option>`);
+  $activityChoices.append(`<option data-id=${activity.id} data-location=${activity.place.location}>${activity.name}</option>`);
 });
 
 // select add button
@@ -22,15 +21,17 @@ activities.forEach(function(activity) {
 // attach in DOM place
 // update map
 
-var selected = $("#hotel-choices").find(":selected")
+console.log(restaurants);
 
 $optionsPanel.on('click', 'button[data-action]', function() {
  	const $select = $(this).siblings('select');
   	const type = $select.data('type');
   	const id = $select.find(':selected').val();
+  	const coords = $select.find(':selected').data('location').split(",");
+  	console.log(coords);
+  	drawMarker(type, coords);
 
   	const $found = $("#itinerary").find('ul');
-		console.log($("#itinerary-item"))
     const appenDiv = (x) => {
 			x.append(`<div class="itinerary-item">
             <span class="title">${id}</span>
@@ -45,5 +46,8 @@ $optionsPanel.on('click', 'button[data-action]', function() {
   	} else if (type === 'activity'){
 			 appenDiv($($found[2]))
   	}
+
  });
+
+
 
