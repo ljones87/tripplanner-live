@@ -16,27 +16,29 @@
           <div>
             <h4>Hotels</h4>
             <select data-type="hotel" id="hotel-choices">
-            {% for hotel in hotels %}
-              <option>{{hotel.name}}</option>
-            {% endfor %}
+            <script>
+              hotels.forEach(function(hotel) {
+                $("#hotel-choices").append("<option data-name="hotel.name">{hotel.name}</option>");
+              })
+            </script>
             </select>
             <button data-action="add" class="btn btn-primary btn-circle pull-right">+</button>
           </div>
           <div>
             <h4>Restaurants</h4>
             <select data-type="restaurant" id="restaurant-choices">
-            {% for restaurant in restaurants %}
+           <!--  {% for restaurant in restaurants %}
               <option>{{restaurant.name}}</option>
-            {% endfor %}
+            {% endfor %} -->
             </select>
             <button data-action="add" class="btn btn-primary btn-circle pull-right">+</button>
           </div>
           <div>
             <h4>Activities</h4>
             <select data-type="activity" id="activity-choices">
-            {% for activity in activities %}
+            <!-- {% for activity in activities %}
               <option>{{activity.name}}</option>
-            {% endfor %}
+            {% endfor %} -->
             </select>
             <button data-action="add" class="btn btn-primary btn-circle pull-right">+</button>
           </div>
@@ -92,4 +94,11 @@
     </div>
   </div>
 </div>
+
+<script>
+  var hotels = {{ hotels | dump | safe }};
+  var restaurants = {{ restaurants | dump | safe }};
+  var activities = {{ activities | dump | safe }};
+  console.log(hotels);
+</script>
 {% endblock %}
