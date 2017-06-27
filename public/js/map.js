@@ -46,6 +46,7 @@ $(function initializeMap (){
     activity: '/images/star-3.png'
   };
 
+
   window.drawMarker = function drawMarker (type, coords) {
     var latLng = new google.maps.LatLng(coords[0], coords[1]);
     var iconURL = iconURLs[type];
@@ -56,4 +57,13 @@ $(function initializeMap (){
     marker.setMap(currentMap);
   };
 
+  // window.removeMarker = function removeMarker (type, coords) {
+  //   var latLng = new google.maps.LatLng(coords[0], coords[1]);
+  //   var iconURL = iconURLs[type];
+  //   var marker = new google.maps.Marker({
+  //     icon: iconURL,
+  //     position: latLng
+  //   });
+  //   marker.setMap(null);
+  // };
 });

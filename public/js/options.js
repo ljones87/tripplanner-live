@@ -21,25 +21,24 @@ activities.forEach(function(activity) {
 // attach in DOM place
 // update map
 
-console.log(restaurants);
-
 $optionsPanel.on('click', 'button[data-action]', function() {
- 	const $select = $(this).siblings('select');
-  	const type = $select.data('type');
-  	const id = $select.find(':selected').val();
-  	const coords = $select.find(':selected').data('location').split(",");
-  	console.log(coords);
-  	drawMarker(type, coords);
-
+		const $select = $(this).siblings('select');
+		const type = $select.data('type');
+		const id = $select.find(':selected').val();
+		const coords = $select.find(':selected').data('location').split(",");
   	const $found = $("#itinerary").find('ul');
+
     const appenDiv = (x) => {
 			x.append(`<div class="itinerary-item">
             <span class="title">${id}</span>
-            <button class="btn btn-xs btn-danger remove btn-circle">x</button>
+            <button data-action="rmvbtn" class="btn btn-xs btn-danger remove btn-circle">x</button>
             </div>`);
 		}
 
-  	if(type === 'hotel'){
+		var dMarker = drawMarker(type, coords);
+
+
+  	if (type === 'hotel'){
 			 appenDiv($($found[0]))
   	} else if (type === 'restaurant'){
 			 appenDiv($($found[1]))
@@ -49,5 +48,15 @@ $optionsPanel.on('click', 'button[data-action]', function() {
 
  });
 
+const $itinerary = $('#itinerary')
 
 
+$itinerary.on('click', 'button[data-action="rmvbtn"]', function() {
+  	const $itineraryItem = $(this).parent();
+    $itineraryItem.remove()
+
+})
+
+
+
+//marker.setMap(null).
