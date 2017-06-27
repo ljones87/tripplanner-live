@@ -14,3 +14,13 @@ restaurants.forEach(function(restaurant) {
 activities.forEach(function(activity) {
   $activityChoices.append(`<option data-id=${activity.id}>${activity.name}</option>`);
 });
+
+// select add button
+// find selected data
+// construct itinerary item
+// attach in DOM place
+// update map
+$("[data-action]").on('click', function() {
+	console.log(this);
+})
+
